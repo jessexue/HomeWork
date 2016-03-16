@@ -38,7 +38,7 @@ class RestaurantTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableViewAutomaticDimension
 
         
@@ -104,7 +104,7 @@ class RestaurantTableViewController: UITableViewController {
         // Configure the cell...
         cell.restaurantName.text = Restaurants[indexPath.row].name
         cell.restaurantImg.image = UIImage(named: Restaurants[indexPath.row].image)
-        cell.restaurantImg.layer.cornerRadius = cell.restaurantImg.frame.size.width / 2
+//        cell.restaurantImg.layer.cornerRadius = cell.restaurantImg.frame.size.width / 2
         cell.restaurantImg.clipsToBounds = true
         cell.restaurantLocation.text = Restaurants[indexPath.row].location
         cell.restaurantType.text = Restaurants[indexPath.row].type

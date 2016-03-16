@@ -11,6 +11,8 @@
 		8842D6761C96A75F0053A633 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8842D6751C96A75F0053A633 /* DetailTableViewCell.swift */; };
 		8842D6861C9903C40053A633 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8842D6841C9903C40053A633 /* Main.storyboard */; };
 		8842D6881C9936890053A633 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8842D6871C9936890053A633 /* ReviewViewController.swift */; };
+		8842D68A1C9948D30053A633 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8842D6891C9948D30053A633 /* MapKit.framework */; };
+		8842D68C1C994C680053A633 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8842D68B1C994C680053A633 /* MapViewController.swift */; };
 		8861F1E71C96640C0042CEDF /* DtailViewConViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8861F1E61C96640C0042CEDF /* DtailViewConViewController.swift */; };
 		8861F1E91C968B220042CEDF /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8861F1E81C968B220042CEDF /* Restaurant.swift */; };
 		88999CC51C8D63F700602D2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88999CC41C8D63F700602D2F /* AppDelegate.swift */; };
@@ -25,6 +27,8 @@
 		8842D6751C96A75F0053A633 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		8842D6851C9903C40053A633 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8842D6871C9936890053A633 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		8842D6891C9948D30053A633 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8842D68B1C994C680053A633 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8861F1E61C96640C0042CEDF /* DtailViewConViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DtailViewConViewController.swift; sourceTree = "<group>"; };
 		8861F1E81C968B220042CEDF /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		88999CC11C8D63F700602D2F /* foodpin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foodpin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8842D68A1C9948D30053A633 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +55,7 @@
 		88999CB81C8D63F700602D2F = {
 			isa = PBXGroup;
 			children = (
+				8842D6891C9948D30053A633 /* MapKit.framework */,
 				88999CC31C8D63F700602D2F /* foodpin */,
 				88999CC21C8D63F700602D2F /* Products */,
 			);
@@ -75,6 +81,7 @@
 				88999CD81C8D700400602D2F /* CustomTableViewCell.swift */,
 				88999CD61C8D652B00602D2F /* RestaurantTableViewController.swift */,
 				8842D6841C9903C40053A633 /* Main.storyboard */,
+				8842D68B1C994C680053A633 /* MapViewController.swift */,
 				88999CCB1C8D63F700602D2F /* Assets.xcassets */,
 				88999CCD1C8D63F700602D2F /* LaunchScreen.storyboard */,
 				88999CD01C8D63F700602D2F /* Info.plist */,
@@ -113,6 +120,11 @@
 				TargetAttributes = {
 					88999CC01C8D63F700602D2F = {
 						CreatedOnToolsVersion = 7.0;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -156,6 +168,7 @@
 				8861F1E91C968B220042CEDF /* Restaurant.swift in Sources */,
 				8842D6761C96A75F0053A633 /* DetailTableViewCell.swift in Sources */,
 				88999CD91C8D700400602D2F /* CustomTableViewCell.swift in Sources */,
+				8842D68C1C994C680053A633 /* MapViewController.swift in Sources */,
 				88999CD71C8D652B00602D2F /* RestaurantTableViewController.swift in Sources */,
 				8861F1E71C96640C0042CEDF /* DtailViewConViewController.swift in Sources */,
 				8842D6881C9936890053A633 /* ReviewViewController.swift in Sources */,

@@ -116,15 +116,22 @@ class DetailTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier ==  "showMap"{
+            let DestVC = segue.destinationViewController as! MapViewController
+            
+            DestVC.restaurant = self.restaurant
+        
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
     
     @IBAction func close(segue: UIStoryboardSegue){
         if let reviewVC = segue.sourceViewController as? ReviewViewController{
