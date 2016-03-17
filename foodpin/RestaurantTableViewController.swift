@@ -38,7 +38,7 @@ class RestaurantTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
-        tableView.estimatedRowHeight = 90
+        tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
 
         
@@ -196,6 +196,9 @@ class RestaurantTableViewController: UITableViewController {
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    @IBAction func cancel(segue: UIStoryboardSegue){
+        
     }
     
 
