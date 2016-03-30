@@ -15,8 +15,26 @@ class addNewTableViewController: UITableViewController, UIImagePickerControllerD
     var isVisited = false
     @IBAction func saveBtTapped(sender: UIBarButtonItem) {
         let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
-
-        NSEntityDescription.inse
+        let restaurant = NSEntityDescription.insertNewObjectForEntityForName("Restaurant", inManagedObjectContext: buffer!) as! Restaurant
+        restaurant.name = name.text!
+        restaurant.type = type.text!
+        restaurant.location = location.text!
+        
+        if let image = picImgView.image{
+            restaurant.image = UIImagePNGRepresentation(image)
+        }
+        restaurant.isVisited = isVisited
+        
+        do {
+            try buffer?.save()
+        
+        } catch {
+            print(error)
+        
+        }
+        performSegueWithIdentifier("unwindToHome", sender: sender)
+        
+        
     }
     @IBOutlet weak var picImgView: UIImageView!
     @IBOutlet weak var name: UITextField!

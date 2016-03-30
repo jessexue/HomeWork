@@ -19,7 +19,7 @@ class ReviewViewController: UIViewController {
     @IBAction func rT1(sender: UIButton) {
         
         switch sender.tag {
-        case 100:
+        case 1:
             rating = "dislike"
         case 2:
             rating = "good"

@@ -25,6 +25,12 @@ class DetailTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 36
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        if restaurant.rating == nil {
+            ratingBt.setImage(UIImage(named: "rating"), forState: .Normal)
+        } else {
+            ratingBt.setImage(UIImage(named: restaurant.rating!), forState: .Normal)
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -138,6 +144,14 @@ class DetailTableViewController: UITableViewController {
             if let rating = reviewVC.rating{
                 self.restaurant.rating = rating
                 self.ratingBt.setImage(UIImage(named: rating), forState: .Normal)
+                
+                let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+                
+                do {
+                    try buffer?.save()
+                } catch {
+                    print(error)
+                }
             }
         }
     }

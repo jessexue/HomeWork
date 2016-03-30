@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
-class RestaurantTableViewController: UITableViewController {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var Restaurants: [Restaurant] = []
+    var frc: NSFetchedResultsController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +21,24 @@ class RestaurantTableViewController: UITableViewController {
         
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
-
+        
+        let request = NSFetchRequest(entityName: "Restaurant")
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        let buffer = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: buffer, sectionNameKeyPath: nil, cacheName: nil)
+        
+        frc.delegate = self
+        
+        do {
+            try frc.performFetch()
+            Restaurants = frc.fetchedObjects as! [Restaurant]
+        } catch {
+            print(error)
+        
+        }
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -27,7 +47,34 @@ class RestaurantTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            if let _newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([_newIndexPath], withRowAnimation: .Automatic)
+            }
+        case .Delete:
+            if let _indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([_indexPath], withRowAnimation: .Automatic)
+            }
+        case .Update:
+            if let _indexPath = indexPath {
+                tableView.reloadRowsAtIndexPaths([_indexPath], withRowAnimation: .Automatic)
+            }
+        default:
+            tableView.reloadData()
+        }
+        Restaurants = controller.fetchedObjects as! [Restaurant]
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -82,7 +129,7 @@ class RestaurantTableViewController: UITableViewController {
         // Configure the cell...
         cell.restaurantName.text = Restaurants[indexPath.row].name
         cell.restaurantImg.image = UIImage(data: Restaurants[indexPath.row].image!)
-//        cell.restaurantImg.layer.cornerRadius = cell.restaurantImg.frame.size.width / 2
+        cell.restaurantImg.layer.cornerRadius = 30
         cell.restaurantImg.clipsToBounds = true
         cell.restaurantLocation.text = Restaurants[indexPath.row].location
         cell.restaurantType.text = Restaurants[indexPath.row].type
@@ -135,12 +182,17 @@ class RestaurantTableViewController: UITableViewController {
         }
     let Delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "删除") { (action, NSIndexPath) -> Void in
         
-        self.Restaurants.removeAtIndex(indexPath.row)
+        let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
         
-        print(self.Restaurants.count)
+        let restaurantToDel = self.frc.objectAtIndexPath(indexPath) as! Restaurant
         
-        // Delete the row from the data source
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        buffer?.deleteObject(restaurantToDel)
+        
+        do {
+            try buffer?.save()
+        } catch{
+            print(error)
+        }
     
         }
         Share.backgroundColor = UIColor(red: 218/255, green: 225/255, blue: 218/255, alpha: 1)
