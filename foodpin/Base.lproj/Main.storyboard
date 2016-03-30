@@ -382,8 +382,8 @@
                                     <segue destination="6AU-5p-Z5h" kind="unwind" identifier="unwindToDetail" unwindAction="close:" id="oJe-qK-RgY"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="请给予您的评价，非常感谢！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTn-Gz-jcb">
-                                <rect key="frame" x="171" y="120" width="260" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请给予您的评价，非常感谢！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTn-Gz-jcb">
+                                <rect key="frame" x="170" y="120" width="260" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="pfN-BU-aDd"/>
                                     <constraint firstAttribute="height" constant="47" id="tYs-IY-57A"/>
@@ -554,13 +554,19 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGH-Tl-Lcg">
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGH-Tl-Lcg">
                                                     <rect key="frame" x="18" y="35" width="30" height="30"/>
                                                     <state key="normal" title="Yes"/>
+                                                    <connections>
+                                                        <action selector="isVisited:" destination="NbV-io-kwV" eventType="touchUpInside" id="ws3-QF-POf"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYL-gf-0S9">
+                                                <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYL-gf-0S9">
                                                     <rect key="frame" x="81" y="35" width="30" height="30"/>
                                                     <state key="normal" title="No"/>
+                                                    <connections>
+                                                        <action selector="isVisited:" destination="NbV-io-kwV" eventType="touchUpInside" id="gfT-UA-U9e"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -580,9 +586,19 @@
                                 <segue destination="LUu-Lb-Au4" kind="unwind" unwindAction="cancel:" id="pjn-jr-Noa"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="HGC-dh-2Aq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="saveBtTapped:" destination="NbV-io-kwV" id="RVC-Uk-ofd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="labelVisited" destination="KSc-4m-r3O" id="CiP-5H-b9I"/>
+                        <outlet property="location" destination="6wL-tu-w0D" id="NJ7-31-XnS"/>
+                        <outlet property="name" destination="Fa9-OM-4aU" id="G3z-6D-Hgb"/>
                         <outlet property="picImgView" destination="CdC-qF-fmb" id="EWB-NH-Pow"/>
+                        <outlet property="type" destination="z7X-fQ-TGs" id="MUN-lH-lJ9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srj-XA-3ny" userLabel="First Responder" sceneMemberID="firstResponder"/>

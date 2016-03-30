@@ -19,7 +19,7 @@ class DtailViewConViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        restaurantImgView.image = UIImage(named: restaurant.image)
+        restaurantImgView.image = UIImage(data: restaurant.image!)
         restaurantTypeLabel.text = String(restaurant.type)
         restaurantLocationLabel.text = String(restaurant.location)
         restaurantNameLebel.text = String(restaurant.name)

@@ -7,10 +7,37 @@
 //
 
 import UIKit
+import CoreData
 
 class addNewTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
+    var restaurant: Restaurant!
+    var isVisited = false
+    @IBAction func saveBtTapped(sender: UIBarButtonItem) {
+        let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+
+        NSEntityDescription.inse
+    }
     @IBOutlet weak var picImgView: UIImageView!
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var location: UITextField!
+    @IBOutlet weak var type: UITextField!
+
+    @IBOutlet weak var labelVisited: UILabel!
+    @IBAction func isVisited(sender: UIButton) {
+        
+        if sender.tag == 101 {
+            isVisited = true
+            labelVisited.text = "我来过"
+        }else{
+            isVisited = false
+            labelVisited.text = "没来过"
+        }
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

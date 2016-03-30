@@ -16,7 +16,7 @@ class DetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        restaurantImagView.image = UIImage(named: restaurant.image)
+        restaurantImagView.image = UIImage(data: restaurant.image!)
         tableView.backgroundColor = UIColor(white: 0.98, alpha: 1)
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.separatorColor = UIColor(white: 0.9, alpha: 1)
@@ -67,7 +67,7 @@ class DetailTableViewController: UITableViewController {
                 cell.valueLabel.text = restaurant.type
             case 3:
                 cell.fieldLable.text = "是否到访过"
-                cell.valueLabel.text = restaurant.isVisted ? "来过" : "没来过"
+                cell.valueLabel.text = restaurant.isVisited.boolValue ? "来过" : "没来过"
         default:
                 cell.fieldLable.text = ""
                 cell.valueLabel.text = ""

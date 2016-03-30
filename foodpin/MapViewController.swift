@@ -69,7 +69,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         let imagView = UIImageView(frame: CGRectMake(0, 0, 53, 53))
-        imagView.image = UIImage(named: restaurant.image)
+        imagView.image = UIImage(data: restaurant.image!)
         annotationView?.leftCalloutAccessoryView = imagView
         return annotationView
         
